@@ -1,0 +1,16 @@
+/* .user-list,.user-header{
+    display: flex;
+} */
+/* .user-list span, .user-header span {
+    word-break: break-all;
+} */
+.user-header{
+    font-weight: bold;
+}
+.btnXs{
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    margin-right: 4px;
+}

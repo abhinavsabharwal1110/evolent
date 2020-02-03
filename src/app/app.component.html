@@ -1,0 +1,65 @@
+
+<div class="container">
+  <h3>Contact Management</h3>
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <form (ngSubmit) = "onSubmit()" [formGroup] = "reactiveForm" class="col-md-6">
+      <div class="form-group">
+        <label for="firstName">First Name :</label>
+        <input type="text" 
+          id="firstName" 
+          class="form-control"
+          formControlName = "firstName">
+        <span *ngIf = "reactiveForm.get('firstName').touched && !reactiveForm.get('firstName').valid">
+          Enter valid value!!
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name :</label>
+        <input type="text" 
+          id="lastName" 
+          class="form-control" 
+          formControlName = "lastName">
+        <span *ngIf = "reactiveForm.get('lastName').touched && !reactiveForm.get('lastName').valid">
+          Enter valid value!!</span>
+      </div>
+      <div class="form-group">
+        <label for="email">E-Mail :</label>
+        <input type="email" 
+          id="email" 
+          class="form-control"
+          formControlName = "email">
+        <span *ngIf = "reactiveForm.get('email').touched && !reactiveForm.get('email').valid">
+          Enter valid email !!</span>
+      </div>
+      <div class="form-group">
+        <label for="phoneNum">Phone Number :</label>
+        <input type="text" 
+          id="phoneNum"
+          class="form-control" 
+          formControlName = "phoneNum"
+          (keypress) = "isNum($event)">
+        <span *ngIf = "reactiveForm.get('phoneNum').touched && !reactiveForm.get('phoneNum').valid">
+          Enter valid value!!</span>
+      </div>
+      <div class="form-group">
+        <label>Status :</label>
+        <div class="radioBtn" *ngFor = "let status of userStatus"> 
+          <input type="radio" 
+            [value] = "status"
+            formControlName = "status"/> {{status}}</div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary margin-right-8" [disabled] = "!reactiveForm.valid"> 
+          {{ editFlag ? 'Edit' : 'Add'}} User</button>
+        <button type="button" class="btn btn-primary" (click) = "clearForm()"> Clear </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-user-list [usersList] = "userData" [selectedIndex] = "index" (editUserData) = "editUser($event)"></app-user-list>
+
+
+

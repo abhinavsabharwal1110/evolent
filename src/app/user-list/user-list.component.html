@@ -1,0 +1,30 @@
+<div *ngIf = "usersList.length > 0">
+    <h3>Contact List</h3>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>        
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let currentUser of usersList; let i=index">
+                    <td>{{currentUser.firstName}}</td>
+                    <td>{{currentUser.lastName}}</td>
+                    <td>{{currentUser.email}}</td>
+                    <td>{{currentUser.phoneNum}}</td>
+                    <td>{{currentUser.status}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btnXs" (click) = "editUser(i)">Edit</button>
+                        <button type="button" [disabled] = "selectedIndex != null" class="btn btn-danger btnXs" (click) = "deleteUser(i)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>  
+    </div>
+</div>
